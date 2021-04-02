@@ -1,13 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 const tasks = ['shovel the ice', 'clear the ice', 'get the car out.']
 
-const element = React.createElement('h1', null, 'Hello, World! This is Thiru');
+//const element3 = <ol>  {tasks.map((task, index) => <li key = {index}> {task} </li> )}  </ol>
 
-const element1 = React.createElement('ol', null, 
-  tasks.map((task, index) => React.createElement('li', {key: index}, task))
-);
+class List extends Component {
+  render() {
+    return  <ol>  
+              {tasks.map((task, index) => <li key = {index}> {task} </li> )}  
+            </ol>
+  }
+}
 
-ReactDOM.render(element, document.getElementById('root')); 
-ReactDOM.render(element1, document.getElementById('root'));
+class Title extends Component {
+  render() {
+    return <h1> TITLE HERE GOES </h1>
+  }
+}
+
+class Main extends Component {
+  render() {
+    return <div>
+            <Title/>
+            <List/>
+            <List/>
+           </div>
+  }
+}
+
+ReactDOM.render(<Main/>, document.getElementById('root'));
